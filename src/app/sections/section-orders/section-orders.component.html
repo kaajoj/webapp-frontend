@@ -11,6 +11,8 @@
         <th>Order Placed</th>
         <th>Order Fulfilled</th>
         <th>Status</th>
+        <th>Add to wallet</th>
+        <th>Remoe from wallet</th>
       </tr>
     </thead>
     <tbody>
@@ -21,16 +23,9 @@
         <td>{{ order.placed | date: 'short' }}</td>
         <td>{{ order.completed | date: 'short' }}</td>
         <td>Status</td>
+        <td><Button>Add</Button></td>
+        <td><Button>Remove</Button></td>
       </tr>
     </tbody>
   </table>
-
-  <app-pagination
-  (goPage)="goToPage($event)"
-  (goPrev)="goToPrevious()"
-  (goNext)="goToNext()"
-  [page]="page"
-  [perPage]="limit"
-  [count]="total">
-  </app-pagination>
 </div>

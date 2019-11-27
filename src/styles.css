@@ -6,7 +6,7 @@ html {
     height: 100%;
 }
 
-body{
+body {
     font-family: 'Source Sans Pro', sans-serif;
     /* background-color: rgb(98, 130, 216); */
     background-color: rgba(0, 128, 128, 255);
@@ -37,7 +37,7 @@ a:hover {
     border-radius: 2px;
 }
 
-.card-heading-theme{
+.card-heading-theme {
     color: #eee;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
@@ -45,10 +45,10 @@ a:hover {
 }
 
 .card-body-theme{
-    background-color: #494F56;
+    background-color: #191F26;
 }
 
-.cards {
+.card-body {
     display: flex;
     flex-direction: column;
 }

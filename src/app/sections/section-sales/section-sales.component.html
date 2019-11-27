@@ -6,7 +6,12 @@
           <h5>Orders by State</h5> 
         </div>
         <div class="card-body">
-          <app-pie-chart *ngIf='salesDataByState' [inputData]='salesDataByState' [limit]='5'></app-pie-chart>
+            <div class="inline-block-child">
+            <app-pie-chart *ngIf='salesDataByState' [inputData]='salesDataByState' [limit]='4'></app-pie-chart>
+            </div>
+            <div class="inline-block-child">
+            Test
+           </div>
         </div>
       </div>
     </div>
@@ -16,7 +21,7 @@
       <div class="card-header card-header-theme">
         <h5>Monthly Sales by Product</h5>
       </div>
-      <div class="card-body">
+      <div>
         <app-line-chart></app-line-chart>
       </div>
     </div>

@@ -33,8 +33,8 @@ export class LineChartComponent implements OnInit {
   lineChartColors = LINE_CHART_COLORS;
 
   ngOnInit() {
-    this._salesDataService.getOrders(1, 100).subscribe(res => {
-      this.allOrders = res['page']['data'];
+    this._salesDataService.getOrders().subscribe(res => {
+      this.allOrders = res;
 
       this._salesDataService.getOrdersByCustomer(3).subscribe(cus => {
         this.topCustomers = cus.map(x => x['name']);

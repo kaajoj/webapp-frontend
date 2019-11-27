@@ -18,7 +18,6 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { SalesDataService } from './services/sales-data.service';
 
 import {appRoutes} from '../routes';
-import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { PaginationComponent } from './pagination/pagination.component';
     SectionOrdersComponent,
     LineChartComponent,
     PieChartComponent,
-    PaginationComponent
   ],
   imports: [
     BrowserModule,

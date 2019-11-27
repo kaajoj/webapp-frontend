@@ -7,8 +7,8 @@ export class SalesDataService {
 
   constructor(private _http: Http) { }
 
-  getOrders(pageIndex: number, pageSize: number) {
-    return this._http.get('http://localhost:5000/api/order/' + pageIndex + '/' + pageSize)
+  getOrders() {
+    return this._http.get('http://localhost:5000/api/order/')
       .map(res => res.json());
   }
 

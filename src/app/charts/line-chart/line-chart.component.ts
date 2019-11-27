@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LINE_CHART_COLORS } from '../../shared/chart.colors';
 import { SalesDataService } from '../../services/sales-data.service';
 import * as moment from 'moment';
 
@@ -9,6 +8,33 @@ import * as moment from 'moment';
 //   { data: [52, 34, 49, 53, 68, 62], label: 'Forecasting'},
 // ];
 // const LINE_CHART_LABELS: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+
+const LINE_CHART_COLORS = [
+  // {
+  //   backgroundColor: 'rgba(6, 214, 160, 0.2)',
+  //   borderColor: 'rgba(0, 200, 140, 0.5)',
+  //   pointBackgroundColor: '#000',
+  //   pointBorderColor: '#000',
+  //   pointHoverBackgroundColor: '#555',
+  //   pointHoverBorderColor: '#555'
+  // },
+  {
+    backgroundColor: 'rgba(255, 209, 102, 0.2)',
+    borderColor: 'rgba(240, 180, 89, 0.5)',
+    pointBackgroundColor: '#000',
+    pointBorderColor: '#000',
+    pointHoverBackgroundColor: '#555',
+    pointHoverBorderColor: '#555'
+  },
+  {
+    backgroundColor: 'rgba(15, 78, 133, 0.2)',
+    borderColor: 'rgba(3, 64, 128, 0.5)',
+    pointBackgroundColor: '#000',
+    pointBorderColor: '#000',
+    pointHoverBackgroundColor: '#555',
+    pointHoverBorderColor: '#555'
+  },
+];
 
 @Component({
   selector: 'app-line-chart',
@@ -59,8 +85,8 @@ export class LineChartComponent implements OnInit {
 
         this.lineChartData = [
           { 'data': r[0].orders.map(x => x.total), 'label': r[0]['customer']},
-          { 'data': r[1].orders.map(x => x.total), 'label': r[1]['customer']},
-          { 'data': r[2].orders.map(x => x.total), 'label': r[2]['customer']}
+          // { 'data': r[1].orders.map(x => x.total), 'label': r[1]['customer']},
+          // { 'data': r[2].orders.map(x => x.total), 'label': r[2]['customer']}
         ];
 
       });

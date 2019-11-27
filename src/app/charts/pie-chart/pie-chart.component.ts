@@ -1,9 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import _ from 'lodash';
-import { THEME_COLORS } from '../../shared/theme.colors';
 
-const theme = 'Bright';
+const theme = 'Default';
 
+const THEME_COLORS = [
+  {
+    name: 'Default',
+    colorSet: [
+        '#26547c',//b
+        '#ffd166',//y
+        '#06d6a0',//g
+        '#083d77',//bb
+        '#ee964b',//o
+        // '#ff6b6b',//r
+        '#fcfcfc']//w       
+  }
+];
 
 @Component({
   selector: 'app-pie-chart',
@@ -25,7 +37,7 @@ export class PieChartComponent implements OnInit {
       borderColor: '#111'
     }
   ];
-  pieChartType = 'doughnut';
+  pieChartType = 'pie';
 
   ngOnInit() {
     this.parseChartData(this.inputData, this.limit)

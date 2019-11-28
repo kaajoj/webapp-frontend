@@ -13,21 +13,24 @@ import { SectionSalesComponent } from './sections/section-sales/section-sales.co
 import { SectionOrdersComponent } from './sections/section-orders/section-orders.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { SectionCryptosComponent } from './sections/section-cryptos/section-cryptos.component';
 
 // Services
-import { SalesDataService } from './services/sales-data.service';
+import { CryptoDataService } from './services/crypto-data.service'; 
 
 import {appRoutes} from '../routes';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    SectionSalesComponent,
-    SectionOrdersComponent,
+    SectionSalesComponent,//r
+    SectionOrdersComponent,//r
     LineChartComponent,
     PieChartComponent,
+    SectionCryptosComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import {appRoutes} from '../routes';
     HttpModule
   ],
   providers: [
-    SalesDataService,
+    CryptoDataService,
   ],
   bootstrap: [AppComponent]
 })

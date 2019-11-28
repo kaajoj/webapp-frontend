@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../shared/order';
-import { SalesDataService } from '../../services/sales-data.service';
+import { CryptoDataService } from '../../services/crypto-data.service'; 
 
 @Component({
   selector: 'app-section-orders',
@@ -9,7 +9,7 @@ import { SalesDataService } from '../../services/sales-data.service';
 })
 export class SectionOrdersComponent implements OnInit {
 
-  constructor(private _salesDataService: SalesDataService) { }
+  constructor(private _salesDataService: CryptoDataService) { }
   
   orders: Order[];
 

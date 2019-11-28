@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesDataService } from '../../services/sales-data.service';
+import { CryptoDataService } from '../../services/crypto-data.service'; 
 import * as moment from 'moment';
 
 // const LINE_CHART_SAMPLE_DATA: any[] = [
@@ -43,7 +43,7 @@ const LINE_CHART_COLORS = [
 })
 export class LineChartComponent implements OnInit {
 
-  constructor(private _salesDataService: SalesDataService) { }
+  constructor(private _salesDataService: CryptoDataService) { }
 
   topCustomers: string[];
   allOrders: any[];

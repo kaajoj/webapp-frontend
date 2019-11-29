@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SectionSalesComponent } from './sections/section-sales/section-sales.component';
-import { SectionOrdersComponent } from './sections/section-orders/section-orders.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { SectionCryptosComponent } from './sections/section-cryptos/section-cryptos.component';
@@ -20,14 +19,12 @@ import { CryptoDataService } from './services/crypto-data.service';
 
 import {appRoutes} from '../routes';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
     SectionSalesComponent,//r
-    SectionOrdersComponent,//r
     LineChartComponent,
     PieChartComponent,
     SectionCryptosComponent,

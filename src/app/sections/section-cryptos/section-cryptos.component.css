@@ -7,3 +7,8 @@ table {
     color: rgba(0, 128, 128, 255);
     font-weight: bold;
 }
+
+button {
+    position: relative;
+    left: 10px;
+}

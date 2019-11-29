@@ -10,6 +10,10 @@ export class SectionCryptosComponent implements OnInit {
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
+  // disFlag = false;
+  buttonAdd: any;
+  buttonRemove: any;
+
   cryptos: Crypto[];
 
   ngOnInit() {
@@ -17,5 +21,30 @@ export class SectionCryptosComponent implements OnInit {
       this.cryptos = res;
     });
   }
+
+  onClickAdd(id) {
+    console.log('test add');
+    this.buttonAdd = document.getElementById(id)
+    console.log(this.buttonAdd);
+    this.buttonAdd.disabled = true;
+
+    this.buttonRemove = document.getElementById(id+""+id);
+    console.log(this.buttonRemove);
+    this.buttonRemove.disabled = false;
+    // this.disFlag = true;
+  }
+
+  onClickRemove(id) {
+    console.log('test remove');
+    this.buttonRemove = document.getElementById(id+""+id);
+    console.log(this.buttonRemove);
+    this.buttonRemove.disabled = true;
+
+    this.buttonAdd = document.getElementById(id)
+    console.log(this.buttonAdd);
+    this.buttonAdd.disabled = false;
+    // this.disFlag = false;
+  }
+  
 
 }

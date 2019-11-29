@@ -19,7 +19,7 @@ export class SectionWalletComponent implements OnInit {
       this.cryptoData = res;
     });
 
-    this._cryptoDataService.getWallet(1).subscribe(res => {
+    this._cryptoDataService.getWallet().subscribe(res => {
       this.cryptos = res;
     });
   }

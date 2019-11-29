@@ -17,12 +17,18 @@ export class CryptoDataService {
       .map(res => res.json());
   }
 
+  addToWallet(n: number, flag: number) {
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/" + flag)
+      .map(res => res.json());
+  }
+
   // addToWallet() {
   //   return this._http.post('http://localhost:5000/api/crypto/', 1)
   //     .map(res => res.json());
   // }
-  getWallet(n: number) {
-    return this._http.get('http://localhost:5000/api/crypto/getcryptowallet/' + n)
+
+  getWallet() {
+    return this._http.get('http://localhost:5000/api/crypto/getcryptowallet')
       .map(res => res.json());
   }
 

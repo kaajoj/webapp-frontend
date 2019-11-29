@@ -33,7 +33,9 @@ export class SectionCryptosComponent implements OnInit {
     this.buttonRemove.disabled = false;
     // this.disFlag = true;
 
-    // this._cryptoDataService.addToWallet();
+    this._cryptoDataService.addToWallet(id,1).subscribe(res => {
+      this.cryptos = res;
+    });
   }
 
   onClickRemove(id) {
@@ -46,6 +48,9 @@ export class SectionCryptosComponent implements OnInit {
     console.log(this.buttonAdd);
     this.buttonAdd.disabled = false;
     // this.disFlag = false;
+    this._cryptoDataService.addToWallet(id,0).subscribe(res => {
+      this.cryptos = res;
+    });
   }
   
 

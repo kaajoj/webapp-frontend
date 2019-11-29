@@ -1,0 +1,14 @@
+h2 {
+    background-color: #191F26;
+    padding: 10px;
+}
+
+table {
+    color: rgba(0, 128, 128, 255);
+    font-weight: bold;
+}
+
+button {
+    position: relative;
+    left: 10px;
+}

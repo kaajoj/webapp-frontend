@@ -13,11 +13,13 @@ import { SectionSalesComponent } from './sections/section-sales/section-sales.co
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { SectionCryptosComponent } from './sections/section-cryptos/section-cryptos.component';
+import { SectionWalletComponent } from './sections/section-wallet/section-wallet.component';
 
 // Services
 import { CryptoDataService } from './services/crypto-data.service'; 
 
 import {appRoutes} from '../routes';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import {appRoutes} from '../routes';
     LineChartComponent,
     PieChartComponent,
     SectionCryptosComponent,
+    SectionWalletComponent,
   ],
   imports: [
     BrowserModule,

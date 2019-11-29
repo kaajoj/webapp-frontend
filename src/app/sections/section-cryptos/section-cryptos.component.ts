@@ -32,6 +32,8 @@ export class SectionCryptosComponent implements OnInit {
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = false;
     // this.disFlag = true;
+
+    // this._cryptoDataService.addToWallet();
   }
 
   onClickRemove(id) {

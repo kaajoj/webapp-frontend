@@ -8,7 +8,7 @@ import { CryptoDataService } from '../../services/crypto-data.service';
 })
 export class SectionWalletComponent implements OnInit {
 
-  cryptoData: any;
+  cryptoData: any; // pie chart
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
@@ -17,6 +17,10 @@ export class SectionWalletComponent implements OnInit {
   ngOnInit() {
     this._cryptoDataService.getCryptos().subscribe(res => {
       this.cryptoData = res;
+    });
+
+    this._cryptoDataService.getWallet(1).subscribe(res => {
+      this.cryptos = res;
     });
   }
 

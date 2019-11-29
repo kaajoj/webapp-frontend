@@ -12,3 +12,7 @@ button {
     position: relative;
     left: 10px;
 }
+
+.section-container {
+    padding: 20px;
+}

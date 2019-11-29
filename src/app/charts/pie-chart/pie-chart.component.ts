@@ -10,7 +10,7 @@ const THEME_COLORS = [
         '#26547c',//b
         '#ffd166',//y
         '#06d6a0',//g
-        '#083d77',//bb
+        // '#083d77',//bb
         '#ee964b',//o
         // '#ff6b6b',//r
         '#fcfcfc']//w       
@@ -46,8 +46,10 @@ export class PieChartComponent implements OnInit {
   parseChartData(res: any, limit?: number) {
     const allData = res.slice(0, limit);
     console.log(allData);
+    // this.pieChartData = allData.map(x => _.values(x)[1]);
+    // this.pieChartLabels = allData.map(x => _.values(x)[0]);
     this.pieChartData = allData.map(x => _.values(x)[1]);
-    this.pieChartLabels = allData.map(x => _.values(x)[0]);
+    this.pieChartLabels = allData.map(x => _.values(x)[3]);
   }
 
   themeColors(setName: string): string[] {

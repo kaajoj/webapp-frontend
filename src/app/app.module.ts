@@ -9,7 +9,6 @@ import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SectionSalesComponent } from './sections/section-sales/section-sales.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { SectionCryptosComponent } from './sections/section-cryptos/section-cryptos.component';
@@ -26,7 +25,6 @@ import {appRoutes} from '../routes';
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    SectionSalesComponent,//r
     LineChartComponent,
     PieChartComponent,
     SectionCryptosComponent,

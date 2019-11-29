@@ -8,14 +8,16 @@ import { CryptoDataService } from '../../services/crypto-data.service';
 })
 export class SectionWalletComponent implements OnInit {
 
+  cryptoData: any;
+
   constructor(private _cryptoDataService: CryptoDataService) { }
 
   cryptos: Crypto[];
 
   ngOnInit() {
-    // this._cryptoDataService.getCryptos().subscribe(res => {
-    //   this.cryptos = res;
-    // });
+    this._cryptoDataService.getCryptos().subscribe(res => {
+      this.cryptoData = res;
+    });
   }
 
 }

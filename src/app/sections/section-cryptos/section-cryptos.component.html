@@ -13,18 +13,18 @@
         <th>Change24h [%]</th>
         <th>Change7d [%]</th>
         <th>Add to wallet</th>
-        <th>Remoe from wallet</th>
+        <th>Remove from wallet</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let crypto of cryptos">
+      <tr *ngFor="let crypto of cryptos" (click)="chartDataOnClick(crypto.price, crypto.change24h, crypto.change7d)"> 
         <!-- <td>{{ crypto.idCrypto}}</td> -->
         <td>{{ crypto.rank }}</td>
         <td>{{ crypto.name }}</td>
         <td>{{ crypto.symbol }}</td>
         <td>{{ crypto.price }}</td>
-        <td>{{ crypto.change24h }}</td>      
-        <td>{{ crypto.change7d }}</td> 
+        <td>{{ crypto.change24h }}</td>
+        <td>{{ crypto.change7d }}</td>
         <!-- <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.rank)" [disabled]="disFlag">Add</button></td>
         <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove()" [disabled]="!disFlag">Remove</button></td> -->    
         <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.rank)"  [disabled]="crypto.ownFlag">Add</button></td>
@@ -38,6 +38,8 @@
       <div class="card shadow card-theme card-bottom">
         <div>
           <app-line-chart></app-line-chart>
+          <!-- <app-line-chart *ngIf='lineChartData' [inputData]='lineChartData'></app-line-chart> -->
+
         </div>
       </div>
     </div>

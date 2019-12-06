@@ -37,9 +37,8 @@
   <div class="row-fluid cards">
       <div class="card shadow card-theme card-bottom">
         <div>
-          <app-line-chart></app-line-chart>
-          <!-- <app-line-chart *ngIf='lineChartData' [inputData]='lineChartData'></app-line-chart> -->
-
+          <!-- <app-line-chart></app-line-chart> -->
+          <app-line-chart *ngIf='lineChartInputData' [lineChartInputData]='lineChartInputData'></app-line-chart>
         </div>
       </div>
     </div>

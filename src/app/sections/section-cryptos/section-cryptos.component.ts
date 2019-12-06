@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service';
 import { stringify } from 'querystring';
+import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.component';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-section-cryptos',
@@ -9,13 +11,18 @@ import { stringify } from 'querystring';
 })
 export class SectionCryptosComponent implements OnInit {
 
-  lineChartData: any;
+  // lineChartInputData: any[] = [
+  //   { data: [1, 2, 3], label: 'Test123'},
+  // ];
+
+  lineChartInputData: any[];
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
   // disFlag = false;
   buttonAdd: any;
   buttonRemove: any;
+  i = 0;
 
   cryptos: Crypto[];
   priceToChart: any[];
@@ -57,12 +64,10 @@ export class SectionCryptosComponent implements OnInit {
   }
 
   chartDataOnClick(price, change24h, change7d) {
+    console.log(this.lineChartInputData)
     console.log(price, change24h, change7d)
-    this.calculatePriceToChart(price, change24h, change7d);
-    // this._cryptoDataService  // teraz w crypto-data.service dodać funkcje 
-    // get po symbolu i pobrac !!!!!!!!!!! JEDNAK NIE, przecież te dane już mam na frontcie
-    // wystarczy pobrać zamiast symboli price, change24 7d, napisać tutaj funkcjie do obliczen ceny 
-    // dla 24 i 7 i przekazanie tego do grafu
+    this.lineChartInputData = this.calculatePriceToChart(price, change24h, change7d);
+    this.i++;
   };
 
   calculatePriceToChart(price, h, d) {
@@ -74,8 +79,9 @@ export class SectionCryptosComponent implements OnInit {
     console.log(parseFloat(d.replace(",",".")).toFixed(2));
   
     price = parseFloat(price.replace(",",".")).toFixed(2);
-    var priceh = parseFloat(price.replace(",","."))/parseFloat(h.replace(",","."));
-    var priced = parseFloat(price.replace(",","."))/parseFloat(d.replace(",","."));
+    var priceh = parseFloat(price.replace(",","."))/(1+parseFloat(h.replace(",","."))/100);
+    var priced = parseFloat(price.replace(",","."))/(1+parseFloat(d.replace(",","."))/100);
+
 
     // const LINE_CHART_PRICE_DATA: any[] = [
     //   { data: [7484, 7300, 7269], label: 'Price Graph'},
@@ -83,7 +89,7 @@ export class SectionCryptosComponent implements OnInit {
     // ];
 
     this.priceToChart = [
-      price, priceh.toFixed(2), priced.toFixed(2)
+      { data: [priced.toFixed(2), priceh.toFixed(2), price], label: 'test'},
     ];
 
     console.log(this.priceToChart);

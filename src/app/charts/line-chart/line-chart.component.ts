@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service'; 
-import * as moment from 'moment';
+import _ from 'lodash';
 
 const LINE_CHART_SAMPLE_DATA: any[] = [
   { data: [7484, 7300, 7269], label: 'Price Graph'},
@@ -38,7 +38,8 @@ export class LineChartComponent implements OnInit {
 
   // topCustomers: string[];
   // allOrders: any[];
-  @Input() lineChartData: any;
+  @Input() lineChartInputData: any;
+  lineChartData: any[];
   // lineChartData: any = LINE_CHART_SAMPLE_DATA;
   // lineChartLabels: any;
   lineChartLabels: any = LINE_CHART_LABELS;
@@ -52,76 +53,11 @@ export class LineChartComponent implements OnInit {
   lineChartColors = LINE_CHART_COLORS;
 
   ngOnInit() {
-        this.lineChartLabels = ['-7d', '-24h', 'Now'];
-
-        // this.lineChartData = [
-        //   { 'data': r[0].orders.map(x => x.total), 'label': r[0]['customer']},
-        //   // { 'data': r[1].orders.map(x => x.total), 'label': r[1]['customer']},
-        //   // { 'data': r[2].orders.map(x => x.total), 'label': r[2]['customer']}
-        // ];
-
+    this.drawChart();
   }
 
-  // getChartData(allOrders: any, name: string) {
-  //   const customerOrders = allOrders.filter(o => o.customer.name === name);
-  //   // console.log('name:', name, 'customerOrders:', customerOrders);
+  drawChart() {
+    this.lineChartData = this.lineChartInputData;
+  }
 
-  //   const formattedOrders = customerOrders.reduce((r, e) => {
-  //     r.push([e.placed, e.total]);
-  //     return r;
-  //   }, []);
-
-  //   // console.log('formattedOrders:', formattedOrders);
-  //   const result = { customer: name, data: formattedOrders };
-
-  //   // console.log('result:', result);
-  //   return result;
-  // }
-
-  // getCustomerOrdersByDate(orders: any, dates: any) {
-  //   // for each customer -> for each date =>
-  //   // { data: [{'customer': 'XYZ', 'orders': [{ 'date': '17-11-25', total: 2421}, {}]}, {}, {}]}
-  //   const customers = this.topCustomers;
-  //   const prettyDates = dates.map(x => this.toFriendlyDate(x));
-  //   const u = Array.from(new Set(prettyDates)).sort();
-  //   // console.log(u);
-
-  //   // define our result object to return:
-  //   const result = {};
-  //   const dataSets = result['data'] = [];
-
-  //   customers.reduce((x, y, i) => {
-  //     // console.log('Reducing:', y, 'at index:', i);
-  //     const customerOrders = [];
-  //     dataSets[i] = {
-  //       customer: y, orders:
-  //       u.reduce((r, e, j) => {
-  //         const obj = {};
-  //         obj['date'] = e;
-  //         obj['total'] = this.getCustomerDateTotal(e, y); // sum total orders for this customer on this day
-  //         customerOrders.push(obj);
-  //         // console.log('Reducing:', e, 'at index:', j, 'customerOrders', customerOrders);
-  //         return customerOrders;
-  //       })
-  //     };
-  //     return x;
-  //   }, []);
-
-  //   return result;
-  // }
-
-  // toFriendlyDate(date: Date) {
-  //   return moment(date).endOf('day').format('YY-MM-DD');
-  // }
-
-  // getCustomerDateTotal(date: any, customer: string) {
-  //   const r = this.allOrders.filter(o => o.customer.name === customer
-  //     && this.toFriendlyDate(o.placed) === date);
-
-  //   const result = r.reduce((a, b) => {
-  //     return a + b.total;
-  //   }, 0);
-
-  //   return result;
-  // }
 }

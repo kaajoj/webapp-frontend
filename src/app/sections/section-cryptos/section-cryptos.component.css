@@ -22,3 +22,20 @@ button {
 .section-container {
     padding: 20px;
 }
+
+.priceColumn {
+    color: gold; 
+}
+
+.change24hColumn {
+    color: gray; 
+}
+
+.change24hColumnGreen {
+    color: green; 
+}
+
+.change7dColumn {
+    color: gray; 
+}
+

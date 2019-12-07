@@ -16,13 +16,13 @@ export class SectionCryptosComponent implements OnInit {
   // ];
 
   lineChartInputData: any[];
+  hColumn: HTMLCollectionOf<Element>;
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
   // disFlag = false;
   buttonAdd: any;
   buttonRemove: any;
-  i = 0;
 
   cryptos: Crypto[];
   priceToChart: any[];
@@ -34,7 +34,15 @@ export class SectionCryptosComponent implements OnInit {
     // this._cryptoDataService.getCryptosAPI().subscribe(res => {
     //   this.cryptos = res;
     // });
-  }
+
+    this.hColumn = document.getElementsByClassName('change24hColumn');
+    console.log(this.hColumn);
+    // console.log(this.hColumn[0].textContent);
+    // if(parseInt(this.hColumn[0].textContent.replace(",",".")) > 0) {
+    //   this.hColumn[0].className = 'change24hColumnGreen';
+    // }
+}
+ 
 
   onClickAdd(id) {
     console.log('test add');
@@ -67,7 +75,6 @@ export class SectionCryptosComponent implements OnInit {
     console.log(this.lineChartInputData)
     console.log(price, change24h, change7d)
     this.lineChartInputData = this.calculatePriceToChart(price, change24h, change7d);
-    this.i++;
   };
 
   calculatePriceToChart(price, h, d) {

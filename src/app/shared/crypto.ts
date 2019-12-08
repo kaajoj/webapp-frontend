@@ -7,4 +7,6 @@ export interface Crypto {
     Change24h: string;
     Change7d: string;
     Quantity: string;
+    AlertUp: string;
+    AlertDown: string; 
 }

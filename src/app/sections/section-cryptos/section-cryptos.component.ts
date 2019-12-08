@@ -57,12 +57,11 @@ export class SectionCryptosComponent implements OnInit {
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = true;
 
-    this.buttonAdd = document.getElementById(id)
+    this.buttonAdd = document.getElementById(id);
     console.log(this.buttonAdd);
     this.buttonAdd.disabled = false;
     // this.disFlag = false;
     this._cryptoDataService.addToWallet(id,0).subscribe();
-    this._cryptoDataService.editQuantity(id,"0").subscribe();
   }
 
   chartDataOnClick(price, change24h, change7d) {

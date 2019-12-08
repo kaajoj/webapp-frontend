@@ -29,8 +29,7 @@
         <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove()" [disabled]="!disFlag">Remove</button></td> -->    
         <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.rank)"  [disabled]="crypto.ownFlag">Add</button></td>
         <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" [disabled]="!crypto.ownFlag">Remove</button></td>
-        <!-- <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" disabled>Remove</button></td> -->
-        
+        <!-- <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" disabled>Remove</button></td> -->   
       </tr>
     </tbody>
   </table>

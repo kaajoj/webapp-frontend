@@ -29,10 +29,10 @@
           <td>{{ crypto.price }}</td>
           <td>{{ crypto.change24h }}</td>     
           <td>{{ crypto.change7d }}</td>   
-          <th>{{ crypto.quantity }} <button class="btn btn-info" (click)="openDialog(crypto.rank)">Edit</button></th>
+          <td>{{ crypto.quantity }} <button class="btn btn-info" (click)="openDialog(crypto.rank)">Edit</button></td>
           <td>{{ crypto.sum }}</td>   
-          <th>10 <button class="btn btn-success" (click)="openDialogAlertUp(crypto.rank)">Set</button></th>
-          <th>20 <button class="btn btn-danger" (click)="openDialogAlertDown(crypto.rank)">Set</button></th>
+          <td>{{ crypto.alertUp }}<button class="btn btn-success" (click)="openDialogAlertUp(crypto.rank)">Set</button></td>
+          <td>{{ crypto.alertDown }}<button class="btn btn-danger" (click)="openDialogAlertDown(crypto.rank)">Set</button></td>
           <!-- <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.rank)">Add</button></td>
           <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" disabled>Remove</button></td> -->
         </tr>

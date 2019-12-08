@@ -40,7 +40,12 @@ export class SectionWalletComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result == undefined) { 
+        // this.alertUp = "0";
+        return;
+      } else {
       this.quantity = result;
+      }
       console.log(this.quantity);
       this._cryptoDataService.editQuantity(id,this.quantity).subscribe();
       // console.log(parseFloat(this.quantity.replace(",",".")));
@@ -49,14 +54,19 @@ export class SectionWalletComponent implements OnInit {
   }
 
   openDialogAlertUp(id): void {
-    const dialogRef = this.dialog.open(DialogAlertUp, {
+    const dialogRef2 = this.dialog.open(DialogAlertUp, {
       width: '260px',
       data: {alertUp: this.alertUp},
       panelClass: 'myapp-no-padding-dialog'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.alertUp = result;
+    dialogRef2.afterClosed().subscribe(result => {
+      if(result == undefined) { 
+        // this.alertUp = "0";
+        return;
+      } else {
+        this.alertUp = result;
+      }
       console.log(this.alertUp);
       this._cryptoDataService.setAlertUp(id,this.alertUp).subscribe();
       // console.log(parseFloat(this.quantity.replace(",",".")));
@@ -65,14 +75,18 @@ export class SectionWalletComponent implements OnInit {
   }
 
   openDialogAlertDown(id): void {
-    const dialogRef = this.dialog.open(DialogAlertDown, {
+    const dialogRef3 = this.dialog.open(DialogAlertDown, {
       width: '260px',
       data: {alertDown: this.alertDown},
       panelClass: 'myapp-no-padding-dialog'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef3.afterClosed().subscribe(result => {
+      if(result == undefined) { 
+        return;
+      } else {
       this.alertDown = result;
+      }
       console.log(this.alertDown);
       this._cryptoDataService.setAlertDown(id,this.alertDown).subscribe();
       // console.log(parseFloat(this.quantity.replace(",",".")));
@@ -102,7 +116,7 @@ export class Dialog {
 }
 
 @Component({
-  selector: 'app-section-wallet-dialog',
+  selector: 'app-section-wallet-dialogalertup',
   templateUrl: 'section-wallet.component-dialogAlertUp.html',
   styleUrls: ['section-wallet.component.css']
 })
@@ -110,18 +124,18 @@ export class Dialog {
 export class DialogAlertUp {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogAlertUp>,
+    public dialogRef2: MatDialogRef<DialogAlertUp>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onNoClickUp(): void {
+    this.dialogRef2.close();
   }
 
 }
 
 
 @Component({
-  selector: 'app-section-wallet-dialog',
+  selector: 'app-section-wallet-dialogalertdown',
   templateUrl: 'section-wallet.component-dialogAlertDown.html',
   styleUrls: ['section-wallet.component.css']
 })
@@ -129,11 +143,11 @@ export class DialogAlertUp {
 export class DialogAlertDown {
   
   constructor(
-    public dialogRef: MatDialogRef<DialogAlertDown>,
+    public dialogRef3: MatDialogRef<DialogAlertDown>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onNoClickDown(): void {
+    this.dialogRef3.close();
   }
 
 }

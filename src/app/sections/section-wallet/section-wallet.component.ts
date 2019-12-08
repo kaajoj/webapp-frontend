@@ -15,7 +15,7 @@ export class SectionWalletComponent implements OnInit {
 
   constructor(private _cryptoDataService: CryptoDataService, public dialog: MatDialog) { }
 
-  cryptos: Crypto[];
+  cryptos: Crypto;
   quantity: string;
 
   ngOnInit() {

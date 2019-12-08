@@ -24,7 +24,7 @@ button {
 }
 
 .priceColumn {
-    color: gold; 
+    color: green; 
 }
 
 .change24hColumn {
@@ -39,3 +39,6 @@ button {
     color: gray; 
 }
 
+td {
+    padding: 7px;
+}

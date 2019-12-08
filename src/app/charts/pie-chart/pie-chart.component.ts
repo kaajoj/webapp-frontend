@@ -10,9 +10,9 @@ const THEME_COLORS = [
         '#26547c',//b
         '#ffd166',//y
         '#06d6a0',//g
-        // '#083d77',//bb
+        '#083d77',//bb
         '#ee964b',//o
-        // '#ff6b6b',//r
+        '#ff6b6b',//r
         '#fcfcfc']//w       
   }
 ];

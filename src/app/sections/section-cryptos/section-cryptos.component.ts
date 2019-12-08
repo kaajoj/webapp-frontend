@@ -16,7 +16,7 @@ export class SectionCryptosComponent implements OnInit {
   // ];
 
   lineChartInputData: any[];
-  hColumn: HTMLCollectionOf<Element>;
+  hColumn: any;
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
@@ -26,6 +26,7 @@ export class SectionCryptosComponent implements OnInit {
 
   cryptos: Crypto[];
   priceToChart: any[];
+  c24h: any;
 
   ngOnInit() {
     this._cryptoDataService.getCryptos().subscribe(res => {
@@ -34,16 +35,8 @@ export class SectionCryptosComponent implements OnInit {
     // this._cryptoDataService.getCryptosAPI().subscribe(res => {
     //   this.cryptos = res;
     // });
-
-    this.hColumn = document.getElementsByClassName('change24hColumn');
-    console.log(this.hColumn);
-    // console.log(this.hColumn[0].textContent);
-    // if(parseInt(this.hColumn[0].textContent.replace(",",".")) > 0) {
-    //   this.hColumn[0].className = 'change24hColumnGreen';
-    // }
 }
  
-
   onClickAdd(id) {
     console.log('test add');
     this.buttonAdd = document.getElementById(id)
@@ -78,10 +71,7 @@ export class SectionCryptosComponent implements OnInit {
     this.lineChartInputData = this.calculatePriceToChart(price, change24h, change7d);
   };
 
-  calculatePriceToChart(price, h, d) {
-    // /100;
-    // price += 1;
-    
+  calculatePriceToChart(price, h, d) {   
     console.log(parseFloat(price.replace(",",".")).toFixed(2));
     console.log(parseFloat(h.replace(",",".")).toFixed(2));
     console.log(parseFloat(d.replace(",",".")).toFixed(2));
@@ -91,13 +81,9 @@ export class SectionCryptosComponent implements OnInit {
     var priced = parseFloat(price.replace(",","."))/(1+parseFloat(d.replace(",","."))/100);
 
 
-    // const LINE_CHART_PRICE_DATA: any[] = [
-    //   { data: [7484, 7300, 7269], label: 'Price Graph'},
-    //   // { data: [100, 50, 250], label: 'Price Graph 2'},
-    // ];
-
     this.priceToChart = [
       { data: [priced.toFixed(2), priceh.toFixed(2), price], label: 'test'},
+      // { data: [priced.toFixed(2), priceh.toFixed(2), price], label: 'test2'},
     ];
 
     console.log(this.priceToChart);

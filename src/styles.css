@@ -52,3 +52,11 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.myapp-no-padding-dialog .mat-dialog-container {
+  padding: 1;
+  border-radius: 5px;
+  background-color: #17a2b8;
+}

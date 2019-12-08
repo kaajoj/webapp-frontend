@@ -17,3 +17,8 @@ button {
 .section-container {
     padding: 20px;
 }
+
+.mat-stroked-button {
+    margin: 10px;
+}
+

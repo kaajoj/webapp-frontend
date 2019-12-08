@@ -18,14 +18,14 @@ export class CryptoDataService {
   }
 
   addToWallet(n: number, flag: number) {
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/" + flag)
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
       .map(res => res.json());
   }
 
-  // editQuantity(n: number, flag: number) {
-  //   return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/" + quantity)
-  //     .map(res => res.json());
-  // }
+  editQuantity(n: number, quantity: string) {
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/quantity/" + quantity)
+      .map(res => res.json());
+  }
 
   // addToWallet() {
   //   return this._http.post('http://localhost:5000/api/crypto/', 1)

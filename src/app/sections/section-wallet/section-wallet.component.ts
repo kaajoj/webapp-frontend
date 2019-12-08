@@ -38,9 +38,9 @@ export class SectionWalletComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.quantity = result;
+      this.quantity = result;     // add if when result = 0
       console.log(this.quantity);
-      // this._cryptoDataService.addToWallet(id,parseFloat(this.quantity.replace(",","."))).subscribe();
+      this._cryptoDataService.addToWallet(id,parseFloat(this.quantity.replace(",","."))).subscribe();
       // console.log(parseFloat(this.quantity.replace(",",".")));
     }); 
   }

@@ -29,6 +29,16 @@ export class CryptoDataService {
       .map(res => res.json());
   }
 
+  setAlertUp(n: number, alertUp: string) {
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/alertup/" + alertUp)
+      .map(res => res.json());
+  }
+
+  setAlertDown(n: number, alertDown: string) {
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/alertdown/" + alertDown)
+      .map(res => res.json());
+  }
+
   // addToWallet2(crypto: Crypto): Observable<Crypto> {
   //   return this._http.post<Crypto>('http://localhost:5000/api/crypto/')
   //     .pipe(

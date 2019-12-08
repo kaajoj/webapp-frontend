@@ -12,7 +12,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { SectionCryptosComponent } from './sections/section-cryptos/section-cryptos.component';
-import { SectionWalletComponent, Dialog } from './sections/section-wallet/section-wallet.component';
+import { SectionWalletComponent, Dialog, DialogAlertDown, DialogAlertUp } from './sections/section-wallet/section-wallet.component';
 
 // Services
 import { CryptoDataService } from './services/crypto-data.service'; 
@@ -37,6 +37,8 @@ import { FormsModule } from '@angular/forms'
     SectionCryptosComponent,
     SectionWalletComponent,
     Dialog,
+    DialogAlertUp,
+    DialogAlertDown,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,9 @@ import { FormsModule } from '@angular/forms'
     MatCardModule,
   ],
   entryComponents: [
-    Dialog
+    Dialog,
+    DialogAlertUp,
+    DialogAlertDown,
   ],
   providers: [
     CryptoDataService,

@@ -23,6 +23,8 @@ const THEME_COLORS = [
   styleUrls: ['./pie-chart.component.css']
 })
 export class PieChartComponent implements OnInit {
+  Total: any;
+  sum: any;
 
   constructor() { }
 
@@ -50,7 +52,9 @@ export class PieChartComponent implements OnInit {
     // this.pieChartLabels = allData.map(x => _.values(x)[0]);
     // console.log(allData.map(x => parseInt(_.values(x)[9])));
     this.pieChartData = allData.map(x => parseInt(_.values(x)[9]));
+    this.Total = allData.map(x => parseFloat(_.values(x)[9].replace(",",".")))
     this.pieChartLabels = allData.map(x => _.values(x)[3]);
+    this.calculateTotal();
   }
 
   themeColors(setName: string): string[] {
@@ -58,5 +62,11 @@ export class PieChartComponent implements OnInit {
     .find(set => set.name === setName).colorSet;
 
     return c;
+  }
+
+  calculateTotal(){
+    this.sum = this.Total.reduce(function(a, b) { return a + b; }, 0);
+    this.sum = this.sum.toFixed(2).replace(".",",");
+    // console.log(this.sum);
   }
 }

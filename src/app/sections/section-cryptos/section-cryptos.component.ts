@@ -69,6 +69,7 @@ export class SectionCryptosComponent implements OnInit {
     this.buttonAdd.disabled = false;
     // this.disFlag = false;
     this._cryptoDataService.addToWallet(id,0).subscribe();
+    this._cryptoDataService.editQuantity(id,"0").subscribe();
   }
 
   chartDataOnClick(price, change24h, change7d) {

@@ -16,7 +16,6 @@ export class SectionWalletComponent implements OnInit {
   constructor(private _cryptoDataService: CryptoDataService, public dialog: MatDialog) { }
 
   cryptos: Crypto[];
-
   quantity: string;
 
   ngOnInit() {
@@ -29,7 +28,6 @@ export class SectionWalletComponent implements OnInit {
     });
   }
 
-
   openDialog(id): void {
     const dialogRef = this.dialog.open(Dialog, {
       width: '260px',
@@ -38,14 +36,15 @@ export class SectionWalletComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.quantity = result;     // add if when result = 0
+      this.quantity = result;
       console.log(this.quantity);
-      this._cryptoDataService.addToWallet(id,parseFloat(this.quantity.replace(",","."))).subscribe();
+      this._cryptoDataService.editQuantity(id,this.quantity).subscribe();
       // console.log(parseFloat(this.quantity.replace(",",".")));
+      location.reload();
     }); 
   }
 
-}
+ }
 
 @Component({
   selector: 'app-section-wallet-dialog',

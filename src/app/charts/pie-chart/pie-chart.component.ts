@@ -48,7 +48,8 @@ export class PieChartComponent implements OnInit {
     console.log(allData);
     // this.pieChartData = allData.map(x => _.values(x)[1]);
     // this.pieChartLabels = allData.map(x => _.values(x)[0]);
-    this.pieChartData = allData.map(x => _.values(x)[1]);
+    // console.log(allData.map(x => parseInt(_.values(x)[9])));
+    this.pieChartData = allData.map(x => parseInt(_.values(x)[9]));
     this.pieChartLabels = allData.map(x => _.values(x)[3]);
   }
 

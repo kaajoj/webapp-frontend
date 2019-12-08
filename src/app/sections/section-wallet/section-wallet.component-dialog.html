@@ -3,12 +3,12 @@
     <div mat-dialog-content>
     <p>Input quantity:</p>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.quantity" placeholder="E.g. 2,5">
+        <input matInput [(ngModel)]="data.quantity" placeholder="E.g. 2,5" autofocus>
     </mat-form-field>
     </div>
     <div mat-dialog-actions>
     <button class="btn btn-danger" mat-stroked-button (click)="onNoClick()">Cancel</button>
-    <button class="btn btn-success" mat-stroked-button [mat-dialog-close]="data.quantity" cdkFocusInitial>Ok</button>
+    <button class="btn btn-success" mat-stroked-button [mat-dialog-close]="data.quantity">Ok</button>
     </div>
 </div>
 

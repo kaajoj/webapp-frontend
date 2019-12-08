@@ -11,13 +11,17 @@
           <!-- <th>#</th> -->
           <th>Name</th>
           <th>Symbol</th>
-          <th>Price [$]</th>
+          <th>Old price [$]</th>
+          <th>Actual price [$]</th>
           <th>Change24h [%]</th>
           <th>Change7d [%]</th>
-          <th>Quantity</th>
           <th>Sum [$]</th>
+          <th>Quantity</th>
+          <th></th>
           <th>Alert up [%]</th>
+          <th></th>
           <th>Alert down [%]</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -27,12 +31,16 @@
           <td>{{ crypto.name }}</td>
           <td>{{ crypto.symbol }}</td>
           <td>{{ crypto.price }}</td>
+          <td>000</td>
           <td>{{ crypto.change24h }}</td>     
-          <td>{{ crypto.change7d }}</td>   
-          <td>{{ crypto.quantity }} <button class="btn btn-info" (click)="openDialog(crypto.rank)">Edit</button></td>
-          <td>{{ crypto.sum }}</td>   
-          <td>{{ crypto.alertUp }}<button class="btn btn-success" (click)="openDialogAlertUp(crypto.rank)">Set</button></td>
-          <td>{{ crypto.alertDown }}<button class="btn btn-danger" (click)="openDialogAlertDown(crypto.rank)">Set</button></td>
+          <td>{{ crypto.change7d }}</td>
+          <td>{{ crypto.sum }}</td>     
+          <td>{{ crypto.quantity }}</td>
+          <td><button class="btn btn-info" (click)="openDialog(crypto.rank)">Edit</button></td>
+          <td>{{ crypto.alertUp }}</td>
+          <td><button class="btn btn-success" (click)="openDialogAlertUp(crypto.rank)">Set</button></td>
+          <td>{{ crypto.alertDown }}</td>
+          <td><button class="btn btn-danger" (click)="openDialogAlertDown(crypto.rank)">Set</button></td>
           <!-- <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.rank)">Add</button></td>
           <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" disabled>Remove</button></td> -->
         </tr>

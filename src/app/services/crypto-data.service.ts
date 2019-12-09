@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class CryptoDataService {
-  [x: string]: any;
+  tempCrypto: any;
 
   constructor(private _http: Http) { }
 
@@ -14,13 +14,13 @@ export class CryptoDataService {
       .map(res => res.json());
   }
 
-  getCryptosAPI() {
-    return this._http.get('http://localhost:5000/api/crypto/getcmcapi')
+  getCryptosSingle(n: number) {
+    return this._http.get('http://localhost:5000/api/crypto/' + n)
       .map(res => res.json());
   }
 
-  addToWallet(n: number, flag: number) {
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
+  getCryptosAPI() {
+    return this._http.get('http://localhost:5000/api/crypto/getcmcapi')
       .map(res => res.json());
   }
 
@@ -39,45 +39,51 @@ export class CryptoDataService {
       .map(res => res.json());
   }
 
-  // addToWallet2(crypto: Crypto): Observable<Crypto> {
+  // addToWallet2(crypto: Crypto): Observable<Crypto> 
   //   return this._http.post<Crypto>('http://localhost:5000/api/crypto/')
   //     .pipe(
   //       catchError(this.handleError('addToWallet', crypto))
   //     );
   // }
 
-  //  addToWallet3() {
-  //   return this._http.post('http://localhost:5000/api/crypto/',
-  //   {
-  //     "idCrypto":30,
-  //     "rank":1,
-  //     "name":"XXX",
-  //     "symbol":"YYY",
-  //     "price":"7257,82",
-  //     "change24h":"0,70",
-  //     "change7d":"-3,82",
-  //     "ownFlag":1,
-  //     "quantity":"0,1",
-  //     "sum":"725,782"
-  //     })
-  //     .subscribe(
-  //       data  => {
-  //       console.log("POST Request is successful ", data);
-  //       },
-  //       error  => {
+
+  // WALLET
+
+   addToWalletTest(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string) {
+    return this._http.post('http://localhost:5000/api/wallet/',
+    {
+      "idCrypto": idCrypto,
+      "rank": rank,
+      "name": name,
+      "symbol": symbol,
+      "price": price,
+      "change24h": change24h,
+      "change7d": change7d,
+      "ownFlag": "1", // to remove
+      "quantity": "0",
+      "sum":"0",
+      "alertUp":"0",
+      "alertDown":"0"
+      })
+      .subscribe(
+        data  => {
+        console.log("POST Request is successful ", data);
+        },
+        error  => {
         
-  //       console.log("Error", error);    
-  //       });
+        console.log("Error", error);    
+        });
+  }
+
+  // Old function
+  // addToWallet(n: number, flag: number) {                           
+  //   return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
+  //     .map(res => res.json());
   // }
 
   getWallet() {
-    return this._http.get('http://localhost:5000/api/crypto/getcryptowallet')
+    return this._http.get('http://localhost:5000/api/wallet/')
       .map(res => res.json());
   }
-
-  // getOrdersByCustomer(n: number) {
-  //   return this._http.get('http://localhost:5000/api/order/bycustomer/' + n)
-  //     .map(res => res.json());
-  // }
 
 }

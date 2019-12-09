@@ -20,11 +20,10 @@ export class SectionCryptosComponent implements OnInit {
 
   constructor(private _cryptoDataService: CryptoDataService) { }
 
-  // disFlag = false;
   buttonAdd: any;
   buttonRemove: any;
 
-  cryptos: Crypto[];
+  cryptos: Crypto;
   priceToChart: any[];
   c24h: any;
 
@@ -37,31 +36,30 @@ export class SectionCryptosComponent implements OnInit {
     // });
 }
  
-  onClickAdd(id) {
+  onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {
     console.log('test add');
-    this.buttonAdd = document.getElementById(id)
+    this.buttonAdd = document.getElementById(rank)
     console.log(this.buttonAdd);
     this.buttonAdd.disabled = true;
 
-    this.buttonRemove = document.getElementById(id+""+id);
+    this.buttonRemove = document.getElementById(rank+""+rank);
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = false;
-    // this.disFlag = true;
-
-    this._cryptoDataService.addToWallet(id,1).subscribe();
+    
+    // this._cryptoDataService.addToWallet(id,1).subscribe();
+    this._cryptoDataService.addToWalletTest(idCrypto, rank, name, symbol, price, change24h, change7d);
   }
 
-  onClickRemove(id) {
+  onClickRemove(rank) {
     console.log('test remove');
-    this.buttonRemove = document.getElementById(id+""+id);
+    this.buttonRemove = document.getElementById(rank+""+rank);
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = true;
 
-    this.buttonAdd = document.getElementById(id);
+    this.buttonAdd = document.getElementById(rank);
     console.log(this.buttonAdd);
     this.buttonAdd.disabled = false;
-    // this.disFlag = false;
-    this._cryptoDataService.addToWallet(id,0).subscribe();
+    this._cryptoDataService.addToWallet(rank,0).subscribe();  // add removing from wallet table
   }
 
   chartDataOnClick(price, change24h, change7d) {

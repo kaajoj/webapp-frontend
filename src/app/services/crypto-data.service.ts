@@ -24,32 +24,14 @@ export class CryptoDataService {
       .map(res => res.json());
   }
 
-  editQuantity(n: number, quantity: string) {
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/quantity/" + quantity)
-      .map(res => res.json());
-  }
-
-  setAlertUp(n: number, alertUp: string) {
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/alertup/" + alertUp)
-      .map(res => res.json());
-  }
-
-  setAlertDown(n: number, alertDown: string) {
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/alertdown/" + alertDown)
-      .map(res => res.json());
-  }
-
-  // addToWallet2(crypto: Crypto): Observable<Crypto> 
-  //   return this._http.post<Crypto>('http://localhost:5000/api/crypto/')
-  //     .pipe(
-  //       catchError(this.handleError('addToWallet', crypto))
-  //     );
-  // }
-
-
   // WALLET
 
-   addToWalletTest(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string) {
+    getWallet() {
+      return this._http.get('http://localhost:5000/api/wallet/')
+        .map(res => res.json());
+    }
+
+    addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string) {
     return this._http.post('http://localhost:5000/api/wallet/',
     {
       "idCrypto": idCrypto,
@@ -75,14 +57,29 @@ export class CryptoDataService {
         });
   }
 
-  // Old function
-  // addToWallet(n: number, flag: number) {                           
-  //   return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
-  //     .map(res => res.json());
-  // }
+  removeFromWallet(n: number) {
+      return this._http.delete('http://localhost:5000/api/wallet/delete/' + n)
+      .map(res => res.json());
+  }
 
-  getWallet() {
-    return this._http.get('http://localhost:5000/api/wallet/')
+  // Old function
+  addToWalletFlag(n: number, flag: number) {                           
+    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
+      .map(res => res.json());
+  }
+
+  editQuantity(n: number, quantity: string) {
+    return this._http.get('http://localhost:5000/api/wallet/edit/' + n + "/quantity/" + quantity)
+      .map(res => res.json());
+  }
+
+  setAlertUp(n: number, alertUp: string) {
+    return this._http.get('http://localhost:5000/api/wallet/edit/' + n + "/alertup/" + alertUp)
+      .map(res => res.json());
+  }
+
+  setAlertDown(n: number, alertDown: string) {
+    return this._http.get('http://localhost:5000/api/wallet/edit/' + n + "/alertdown/" + alertDown)
       .map(res => res.json());
   }
 

@@ -46,8 +46,8 @@ export class SectionCryptosComponent implements OnInit {
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = false;
     
-    // this._cryptoDataService.addToWallet(id,1).subscribe();
-    this._cryptoDataService.addToWalletTest(idCrypto, rank, name, symbol, price, change24h, change7d);
+    this._cryptoDataService.addToWalletFlag(rank,1).subscribe();
+    this._cryptoDataService.addToWallet(idCrypto, rank, name, symbol, price, change24h, change7d);
   }
 
   onClickRemove(rank) {
@@ -59,7 +59,8 @@ export class SectionCryptosComponent implements OnInit {
     this.buttonAdd = document.getElementById(rank);
     console.log(this.buttonAdd);
     this.buttonAdd.disabled = false;
-    this._cryptoDataService.addToWallet(rank,0).subscribe();  // add removing from wallet table
+    this._cryptoDataService.addToWalletFlag(rank,0).subscribe();  
+    this._cryptoDataService.removeFromWallet(rank).subscribe();
   }
 
   chartDataOnClick(price, change24h, change7d) {

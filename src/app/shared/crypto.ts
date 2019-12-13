@@ -4,6 +4,7 @@ export interface Crypto {
     Symbol: string;
     Rank: number;
     Price: string;
+    OldPrice: string;
     Change24h: string;
     Change7d: string;
     Quantity: string;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class CryptoDataService {
@@ -34,11 +33,12 @@ export class CryptoDataService {
     addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string) {
     return this._http.post('http://localhost:5000/api/wallet/',
     {
-      "idCrypto": idCrypto,
+      "id": idCrypto,
       "rank": rank,
       "name": name,
       "symbol": symbol,
       "price": price,
+      "oldprice": price,
       "change24h": change24h,
       "change7d": change7d,
       "ownFlag": "1", // to remove

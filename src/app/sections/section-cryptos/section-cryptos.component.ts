@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service';
-import { stringify } from 'querystring';
-import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.component';
-import { empty } from 'rxjs';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-section-cryptos',
@@ -28,12 +26,18 @@ export class SectionCryptosComponent implements OnInit {
   c24h: any;
 
   ngOnInit() {
-    this._cryptoDataService.getCryptos().subscribe(res => {
+    // (async () => { 
+      this._cryptoDataService.getCryptosAPI().subscribe(res => {
       this.cryptos = res;
-    });
-    // this._cryptoDataService.getCryptosAPI().subscribe(res => {
-    //   this.cryptos = res;
-    // });
+      });
+      // console.log('before delay');
+
+      // await delay(1000);
+      // console.log('after delay');
+      // this._cryptoDataService.getCryptos().subscribe(res => {
+      // this.cryptos = res;
+      // });
+  // })();
 }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {

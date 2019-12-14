@@ -29,11 +29,11 @@ export class SectionWalletComponent implements OnInit {
       this._cryptoDataService.getWallet().subscribe(res => {
         this.cryptos = res;
       });
-     }, 500);
+     }, 1000);
 
-    // setTimeout(() => {
-    //   this.calculateAlerts();
-    //  }, 1000);
+    setTimeout(() => {
+      this.calculateAlerts();
+     }, 2500);
   }
 
   openDialog(id): void {
@@ -99,9 +99,32 @@ export class SectionWalletComponent implements OnInit {
   }
 
 
-  // calculateAlerts() {  
-  //   console.log(this.cryptos[0]);
-  // }
+  calculateAlerts() { 
+    for (const id in this.cryptos) {
+      if (this.cryptos.hasOwnProperty(id)) {
+        const element = this.cryptos[id];
+        
+        var symbol = element.symbol;
+        var oldPrice = parseFloat(element.oldPrice.replace(",","."));
+        var newPrice = parseFloat(element.price.replace(",","."));
+        var calculation = parseFloat((((newPrice/oldPrice)-1)*100).toFixed(2));
+
+        var alertUp = parseFloat(element.alertUp.replace(",","."));
+        var alertDown = parseFloat(element.alertDown.replace(",","."));
+
+        console.log(oldPrice);
+        console.log(newPrice);
+        console.log(calculation);
+
+        console.log(alertUp);
+        console.log(alertDown);
+
+        if(calculation<-alertDown) console.log("Price below alert - buy " + symbol)
+        if(calculation>alertUp) console.log("Price above alert - sell " + symbol)
+      }
+    }
+  }
+
 
  }
 

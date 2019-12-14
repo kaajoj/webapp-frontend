@@ -13,8 +13,9 @@
           <th>Symbol</th>
           <th>Old price [$]</th>
           <th>Actual price [$]</th>
-          <th>Change24h [%]</th>
-          <th>Change7d [%]</th>
+          <!-- <th>Change24h [%]</th> -->
+          <!-- <th>Change7d [%]</th> -->
+          <th>Change [%]</th>
           <th>Sum [$]</th>
           <th>Quantity</th>
           <th></th>
@@ -32,8 +33,9 @@
           <td>{{ crypto.symbol }}</td>
           <td>{{ crypto.oldPrice }}</td>
           <td>{{ crypto.price }}</td>
-          <td>{{ crypto.change24h }}</td>     
-          <td>{{ crypto.change7d }}</td>
+          <!-- <td>{{ crypto.change24h }}</td>      -->
+          <!-- <td>{{ crypto.change7d }}</td> -->
+          <td>{{ crypto.calculation }}</td>     
           <td>{{ crypto.sum }}</td>     
           <td>{{ crypto.quantity }}</td>
           <td><button class="btn btn-info" (click)="openDialog(crypto.rank)">Edit</button></td>

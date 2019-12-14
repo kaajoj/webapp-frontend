@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service';
 import { delay } from 'q';
+import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.component';
 
 @Component({
   selector: 'app-section-cryptos',
@@ -31,6 +32,13 @@ export class SectionCryptosComponent implements OnInit {
       this._cryptoDataService.getCryptosAPI().subscribe(res => {
       this.cryptos = res;
       });
+
+      setTimeout(() => {
+          this._cryptoDataService.getCryptos().subscribe(res => {
+            this.cryptos = res;
+            });
+       }, 3000);
+
   }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {
@@ -61,15 +69,15 @@ export class SectionCryptosComponent implements OnInit {
   }
 
   chartDataOnClick(price, change24h, change7d) {
-    console.log(this.lineChartInputData)
+    // console.log(this.lineChartInputData)
     console.log(price, change24h, change7d)
     this.lineChartInputData = this.calculatePriceToChart(price, change24h, change7d);
   };
 
   calculatePriceToChart(price, h, d) {   
-    console.log(parseFloat(price.replace(",",".")).toFixed(2));
-    console.log(parseFloat(h.replace(",",".")).toFixed(2));
-    console.log(parseFloat(d.replace(",",".")).toFixed(2));
+    // console.log(parseFloat(price.replace(",",".")).toFixed(2));
+    // console.log(parseFloat(h.replace(",",".")).toFixed(2));
+    // console.log(parseFloat(d.replace(",",".")).toFixed(2));
   
     price = parseFloat(price.replace(",",".")).toFixed(2);
     var priceh = parseFloat(price.replace(",","."))/(1+parseFloat(h.replace(",","."))/100);

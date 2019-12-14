@@ -26,3 +26,15 @@ td {
     padding: 8px;
     text-align: center;
 }
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red; 
+}
+
+.card-body {
+    font-size: 18px
+}

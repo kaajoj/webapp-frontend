@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service'; 
 import _ from 'lodash';
 
-const LINE_CHART_SAMPLE_DATA: any[] = [
-  { data: [7484, 7300, 7269], label: 'Price Graph'},
-  // { data: [100, 50, 250], label: 'Price Graph 2'},
-];
+// const LINE_CHART_SAMPLE_DATA: any[] = [
+//   { data: [7484, 7300, 7269], label: 'Price Graph'},
+// { data: [100, 50, 250], label: 'Price Graph 2'},
+// ];
 const LINE_CHART_LABELS: string[] = ['-7d', '-24h', 'Now'];
 
 const LINE_CHART_COLORS = [
@@ -36,8 +36,6 @@ export class LineChartComponent implements OnInit {
 
   constructor(private _salesDataService: CryptoDataService) { }
 
-  // topCustomers: string[];
-  // allOrders: any[];
   @Input() lineChartInputData: any;
   lineChartData: any[];
   // lineChartData: any = LINE_CHART_SAMPLE_DATA;
@@ -52,6 +50,7 @@ export class LineChartComponent implements OnInit {
   lineChartType = 'line';
   lineChartColors = LINE_CHART_COLORS;
 
+  
   ngOnInit() {
     this.drawChart();
   }

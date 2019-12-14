@@ -108,19 +108,25 @@ export class SectionWalletComponent implements OnInit {
         var oldPrice = parseFloat(element.oldPrice.replace(",","."));
         var newPrice = parseFloat(element.price.replace(",","."));
         var calculation = parseFloat((((newPrice/oldPrice)-1)*100).toFixed(2));
-
         var alertUp = parseFloat(element.alertUp.replace(",","."));
         var alertDown = parseFloat(element.alertDown.replace(",","."));
+        element.calculation = calculation;
 
         console.log(oldPrice);
         console.log(newPrice);
         console.log(calculation);
+        // console.log(alertUp);
+        // console.log(alertDown);
 
-        console.log(alertUp);
-        console.log(alertDown);
+        if(calculation<-alertDown) {
+          element.buy = "Price below alert(" + -alertDown + ") - buy " + symbol
+          console.log("Price below alert - buy " + symbol)
+        }
+        if(calculation>alertUp) {
+          element.sell = "Price below alert(" + alertUp + ") - buy " + symbol
+          console.log("Price above alert - sell " + symbol)
+        }
 
-        if(calculation<-alertDown) console.log("Price below alert - buy " + symbol)
-        if(calculation>alertUp) console.log("Price above alert - sell " + symbol)
       }
     }
   }

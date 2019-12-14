@@ -41,7 +41,7 @@ export class CryptoDataService {
       "oldprice": price,
       "change24h": change24h,
       "change7d": change7d,
-      "ownFlag": "1", // to remove
+      "ownFlag": "1", 
       "quantity": "0",
       "sum":"0",
       "alertUp":"0",
@@ -80,6 +80,11 @@ export class CryptoDataService {
 
   setAlertDown(n: number, alertDown: string) {
     return this._http.get('http://localhost:5000/api/wallet/edit/' + n + "/alertdown/" + alertDown)
+      .map(res => res.json());
+  }
+
+  updateWalletPrices() {
+    return this._http.get('http://localhost:5000/api/wallet/edit/prices/')
       .map(res => res.json());
   }
 

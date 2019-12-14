@@ -22,23 +22,16 @@ export class SectionCryptosComponent implements OnInit {
   buttonRemove: any;
 
   cryptos: Crypto;
+  cryptosWallet: Crypto;
+
   priceToChart: any[];
   c24h: any;
 
   ngOnInit() {
-    // (async () => { 
       this._cryptoDataService.getCryptosAPI().subscribe(res => {
       this.cryptos = res;
       });
-      // console.log('before delay');
-
-      // await delay(1000);
-      // console.log('after delay');
-      // this._cryptoDataService.getCryptos().subscribe(res => {
-      // this.cryptos = res;
-      // });
-  // })();
-}
+  }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {
     console.log('test add');

@@ -51,8 +51,8 @@ export class PieChartComponent implements OnInit {
     // this.pieChartData = allData.map(x => _.values(x)[1]);
     // this.pieChartLabels = allData.map(x => _.values(x)[0]);
     // console.log(allData.map(x => parseInt(_.values(x)[9])));
-    this.pieChartData = allData.map(x => parseInt(_.values(x)[9]));
-    this.Total = allData.map(x => parseFloat(_.values(x)[9].replace(",",".")))
+    this.pieChartData = allData.map(x => parseInt(_.values(x)[10]));
+    this.Total = allData.map(x => parseFloat(_.values(x)[10].replace(",",".")))
     this.pieChartLabels = allData.map(x => _.values(x)[3]);
     this.calculateTotal();
   }

@@ -23,13 +23,17 @@ export class SectionWalletComponent implements OnInit {
   alertDown: string;
 
   ngOnInit() {
-    // this._cryptoDataService.getCryptos().subscribe(res => {
-    //   this.cryptoData = res;
-    // });
+    this._cryptoDataService.updateWalletPrices().subscribe();
 
-    this._cryptoDataService.getWallet().subscribe(res => {
-      this.cryptos = res;
-    });
+    setTimeout(() => {
+      this._cryptoDataService.getWallet().subscribe(res => {
+        this.cryptos = res;
+      });
+     }, 500);
+
+    // setTimeout(() => {
+    //   this.calculateAlerts();
+    //  }, 1000);
   }
 
   openDialog(id): void {
@@ -94,6 +98,10 @@ export class SectionWalletComponent implements OnInit {
     }); 
   }
 
+
+  // calculateAlerts() {  
+  //   console.log(this.cryptos[0]);
+  // }
 
  }
 

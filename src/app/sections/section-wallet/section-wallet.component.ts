@@ -119,11 +119,11 @@ export class SectionWalletComponent implements OnInit {
         // console.log(alertDown);
 
         if(calculation<-alertDown) {
-          element.buy = "Price below alert(" + -alertDown + ")  -  buy  " + symbol
+          element.buy = "Price below your alert(" + -alertDown + "%)  -  buy  " + symbol
           console.log("Price below alert - buy  " + symbol)
         }
         if(calculation>alertUp) {
-          element.sell = "Price below alert(" + alertUp + ")  -  sell  " + symbol
+          element.sell = "Price above your alert(" + alertUp + "%)  -  sell  " + symbol
           console.log("Price above alert - sell  " + symbol)
         }
 

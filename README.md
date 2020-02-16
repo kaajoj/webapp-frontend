@@ -1,5 +1,7 @@
 # CryptoWebApp
 
+Web app to manage cryptos assets portfolio. Frontend (Angular) + backend (.NET Core + PostgreSQL)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
 ## Development server

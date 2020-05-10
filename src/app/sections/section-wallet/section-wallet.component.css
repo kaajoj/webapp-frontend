@@ -5,8 +5,20 @@ h2 {
 }
 
 table {
-    color: rgba(0, 128, 128, 255);
+    background-color: #191F26;
     font-weight: bold;
+}
+
+td, th, thead, tr {
+    color: rgba(0, 128, 128, 255);
+    padding: 8px;
+    text-align: center;
+    vertical-align: 0;
+    border-color: rgba(0, 128, 128, 255)!important;
+}
+
+th {
+    color:darkgoldenrod;
 }
 
 button {
@@ -20,11 +32,6 @@ button {
 
 .mat-stroked-button {
     margin: 10px;
-}
-
-td {
-    padding: 8px;
-    text-align: center;
 }
 
 .green {

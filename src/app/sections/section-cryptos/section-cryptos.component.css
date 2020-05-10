@@ -5,15 +5,25 @@ h2 {
 }
 
 table {
-    color: rgba(0, 128, 128, 255);
+    background-color: #191F26;
     font-weight: bold;
+}
+
+td, th, thead, tr {
+    color: rgba(0, 128, 128, 255);
+    padding: 7px;
+    vertical-align: 0;
+    border-color: rgba(0, 128, 128, 255)!important;
+}
+
+th {
+    color:darkgoldenrod;
 }
 
 button {
     position: relative;
     left: 10px;
 }
-
 
 /* .card-bottom {
     height: 50vh;
@@ -37,8 +47,4 @@ button {
 
 .change7dColumn {
     color: gray; 
-}
-
-td {
-    padding: 7px;
 }

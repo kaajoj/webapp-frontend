@@ -44,8 +44,8 @@ export class CryptoDataService {
       "ownFlag": "1", 
       "quantity": "0",
       "sum":"0",
-      "alertUp":"0",
-      "alertDown":"0"
+      "alertUp":"20",
+      "alertDown":"10"
       })
       .subscribe(
         data  => {

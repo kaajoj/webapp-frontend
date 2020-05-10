@@ -41,7 +41,7 @@ export class CryptoDataService {
       "oldprice": price,
       "change24h": change24h,
       "change7d": change7d,
-      "ownFlag": "1", 
+      "ownFlag": 1, 
       "quantity": "0",
       "sum":"0",
       "alertUp":"20",

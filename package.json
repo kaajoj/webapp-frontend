@@ -1,5 +1,5 @@
 {
-  "name": "ng-sight",
+  "name": "crypto-web-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -24,19 +24,19 @@
     "@angular/platform-server": "8.2.12",
     "@angular/router": "8.2.12",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
-    "aspnet-prerendering": "^3.0.1",
     "angular-http-service": "^1.2.9",
     "angular-in-memory-web-api": "^0.8.0",
-    "bootstrap": "^4.4.1",
+    "aspnet-prerendering": "^3.0.1",
+    "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.3.3",
     "jquery": "^3.5.1",
+    "ng2-charts": "^2.3.2",
     "oidc-client": "^1.9.1",
-    "ng2-charts": "^2.2.3",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.3",
     "rxjs-compat": "^6.5.5",
-    "tslib": "^1.11.2",
+    "tslib": "^1.13.0",
     "zone.js": "0.9.1"
   },
   "devDependencies": {

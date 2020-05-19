@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 
@@ -26,6 +26,8 @@ import { MatButtonModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms'
 
+import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { FormsModule } from '@angular/forms'
   ],
   imports: [
     BrowserModule,
+    ApiAuthorizationModule,
     RouterModule.forRoot(appRoutes),
     ChartsModule,
     HttpModule,
@@ -60,7 +63,8 @@ import { FormsModule } from '@angular/forms'
   ],
   providers: [
     CryptoDataService,
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
   ],
   bootstrap: [AppComponent]
 })

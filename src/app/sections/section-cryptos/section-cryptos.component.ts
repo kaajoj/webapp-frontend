@@ -22,7 +22,7 @@ export class SectionCryptosComponent implements OnInit {
   buttonAdd: any;
   buttonRemove: any;
 
-  cryptos: Crypto;
+  cryptos: any;
   cryptosWallet: Crypto;
 
   priceToChart: any[];

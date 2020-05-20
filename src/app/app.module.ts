@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
@@ -20,10 +19,10 @@ import { CryptoDataService } from './services/crypto-data.service';
 import {appRoutes} from '../routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material';
-import { MatInputModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material';
-import { MatCardModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms'
 
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
@@ -47,7 +46,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     ApiAuthorizationModule,
     RouterModule.forRoot(appRoutes),
     ChartsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,

@@ -31,7 +31,7 @@
     "core-js": "^3.3.3",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.3.2",
-    "oidc-client": "^1.9.1",
+    "oidc-client": "1.9.1",
     "popper.js": "^1.16.1",
     "rxjs": "6.5.4",
     "rxjs-compat": "^6.5.5",

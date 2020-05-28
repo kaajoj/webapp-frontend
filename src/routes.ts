@@ -10,8 +10,8 @@ export const appRoutes: Routes = [
     },
     {
         path: 'wallet',
-        component: SectionWalletComponent
-        // canActivate: [AuthorizeGuard]
+        component: SectionWalletComponent,
+        canActivate: [AuthorizeGuard]
     },
 
     {path: '', redirectTo: '/cryptos', pathMatch: 'full'},

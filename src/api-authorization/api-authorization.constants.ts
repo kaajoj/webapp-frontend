@@ -41,8 +41,8 @@ let applicationPaths: ApplicationPathsType = {
   LogOutPathComponents: [],
   LoggedOutPathComponents: [],
   LogOutCallbackPathComponents: [],
-  IdentityRegisterPath: '/Identity/Account/Register',
-  IdentityManagePath: '/Identity/Account/Manage'
+  IdentityRegisterPath: 'https://localhost:5001/Identity/Account/Register',
+  IdentityManagePath: 'https://localhost:5001/Identity/Account/Manage'
 };
 
 applicationPaths = {

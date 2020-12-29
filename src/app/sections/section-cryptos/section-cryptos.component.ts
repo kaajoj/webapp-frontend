@@ -33,11 +33,11 @@ export class SectionCryptosComponent implements OnInit {
       this.cryptos = res;
       });
 
-      setTimeout(() => {
-          this._cryptoDataService.getCryptos().subscribe(res => {
-            this.cryptos = res;
-            });
-       }, 3000);
+      // setTimeout(() => {
+      //     this._cryptoDataService.getCryptos().subscribe(res => {
+      //       this.cryptos = res;
+      //       });
+      //  }, 3000);
 
   }
  

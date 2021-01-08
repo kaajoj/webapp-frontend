@@ -29,16 +29,17 @@ export class SectionCryptosComponent implements OnInit {
   c24h: any;
 
   ngOnInit() {
-      this._cryptoDataService.getCryptosAPI().subscribe(res => {
-      this.cryptos = res;
-      });
+    this._cryptoDataService.getCryptos().subscribe(
+      res => {
+        this.cryptos = res;
+      }); 
 
-      // setTimeout(() => {
-      //     this._cryptoDataService.getCryptos().subscribe(res => {
-      //       this.cryptos = res;
-      //       });
-      //  }, 3000);
-
+    setTimeout(() => {
+        this._cryptoDataService.getCryptosAPI().subscribe(
+          res => {
+          this.cryptos = res;
+          });
+     }, 1000);
   }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {

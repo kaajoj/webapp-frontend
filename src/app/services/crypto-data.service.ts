@@ -61,11 +61,6 @@ export class CryptoDataService {
       return this._http.delete('http://localhost:5000/api/wallet/delete/' + n)
   }
 
-  // Old function
-  addToWalletFlag(n: number, flag: number) {                           
-    return this._http.get('http://localhost:5000/api/crypto/edit/' + n + "/own/" + flag)
-  }
-
   editQuantity(n: number, quantity: string) {
     return this._http.get('http://localhost:5000/api/wallet/edit/' + n + "/quantity/" + quantity)
   }

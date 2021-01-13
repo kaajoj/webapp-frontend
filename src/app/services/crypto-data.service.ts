@@ -30,7 +30,7 @@ export class CryptoDataService {
       return this._http.get('http://localhost:5000/api/wallet/GetWalletByUserId/' + id)
     }
 
-    addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string) {
+    addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string, userId: string) {
     return this._http.post('http://localhost:5000/api/wallet/',
     {
       "idcrypto": idCrypto,
@@ -40,12 +40,12 @@ export class CryptoDataService {
       "price": price,
       "oldprice": price,
       "change24h": change24h,
-      "change7d": change7d,
-      "ownFlag": 1, 
+      "change7d": change7d, 
       "quantity": "0",
       "sum":"0",
       "alertUp":"20",
-      "alertDown":"10"
+      "alertDown":"10",
+      "userId" : userId
       })
       .subscribe(
         data  => {

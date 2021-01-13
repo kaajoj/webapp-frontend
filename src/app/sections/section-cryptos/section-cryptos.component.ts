@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service';
 import { delay } from 'q';
 import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.component';
+import { AuthorizeService } from '../../../api-authorization/authorize.service';
 
 @Component({
   selector: 'app-section-cryptos',
@@ -9,6 +10,7 @@ import { LineChartComponent } from 'src/app/charts/line-chart/line-chart.compone
   styleUrls: ['./section-cryptos.component.css']
 })
 export class SectionCryptosComponent implements OnInit {
+  public userId: string;
 
   // lineChartInputData: any[] = [
   //   { data: [1, 2, 3], label: 'Test123'},
@@ -17,7 +19,7 @@ export class SectionCryptosComponent implements OnInit {
   lineChartInputData: any[];
   hColumn: any;
 
-  constructor(private _cryptoDataService: CryptoDataService) { }
+  constructor(private _cryptoDataService: CryptoDataService, private authorizeService: AuthorizeService) { }
 
   buttonAdd: any;
   buttonRemove: any;
@@ -40,23 +42,26 @@ export class SectionCryptosComponent implements OnInit {
           this.cryptos = res;
           });
      }, 1000);
+
+    this.authorizeService.getUser().subscribe(data => {
+      this.userId = data['sub'];
+    });
+
   }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {
-    console.log('test add');
     this.buttonAdd = document.getElementById(rank)
-    console.log(this.buttonAdd);
+    // console.log(this.buttonAdd);
     this.buttonAdd.disabled = true;
 
     this.buttonRemove = document.getElementById(rank+""+rank);
-    console.log(this.buttonRemove);
+    // console.log(this.buttonRemove);
     this.buttonRemove.disabled = false;
     
-    this._cryptoDataService.addToWallet(idCrypto, rank, name, symbol, price, change24h, change7d);
+    this._cryptoDataService.addToWallet(idCrypto, rank, name, symbol, price, change24h, change7d, this.userId);
   }
 
   onClickRemove(rank) {
-    console.log('test remove');
     this.buttonRemove = document.getElementById(rank+""+rank);
     console.log(this.buttonRemove);
     this.buttonRemove.disabled = true;

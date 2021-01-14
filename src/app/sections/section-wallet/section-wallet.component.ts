@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CryptoDataService } from '../../services/crypto-data.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AuthorizeService } from '../../../api-authorization/authorize.service';
 
 export interface DialogData {
   quantity: string;
@@ -14,8 +15,13 @@ export interface DialogData {
   styleUrls: ['./section-wallet.component.css']
 })
 export class SectionWalletComponent implements OnInit {
+  public userId: string;
 
-  constructor(private _cryptoDataService: CryptoDataService, public dialog: MatDialog) { }
+  constructor(
+    private _cryptoDataService: CryptoDataService, 
+    public dialog: MatDialog,
+    private authorizeService: AuthorizeService
+    ) { }
 
   cryptos: any;
   quantity: string;
@@ -26,14 +32,23 @@ export class SectionWalletComponent implements OnInit {
     this._cryptoDataService.updateWalletPrices().subscribe();
 
     setTimeout(() => {
+      // this.authorizeService.getUser().subscribe(data => {
+      //   this.userId = data['sub'];
+      //   this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
+      //   this.cryptos = res;
+      //   });
+      // });
       this._cryptoDataService.getWallet().subscribe(res => {
         this.cryptos = res;
       });
-     }, 1000);
+      // this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
+      // this.cryptos = res;
+      // });
+    }, 1000);
 
     setTimeout(() => {
       this.calculateAlerts();
-     }, 2500);
+    }, 2500);
   }
 
   openDialog(id): void {

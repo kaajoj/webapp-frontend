@@ -21,7 +21,6 @@ export class CryptoDataService {
   }
 
   // WALLET
-
     getWallet() {
       return this._http.get('http://localhost:5000/api/wallet/')
     }

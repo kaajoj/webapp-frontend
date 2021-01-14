@@ -10,6 +10,7 @@ import { AuthorizeService } from '../../../api-authorization/authorize.service';
   styleUrls: ['./section-cryptos.component.css']
 })
 export class SectionCryptosComponent implements OnInit {
+  public isAuthenticated: boolean;
   public userId: string;
 
   // lineChartInputData: any[] = [
@@ -43,10 +44,34 @@ export class SectionCryptosComponent implements OnInit {
           });
      }, 1000);
 
-    this.authorizeService.getUser().subscribe(data => {
-      this.userId = data['sub'];
+    this.authorizeService.isAuthenticated().subscribe( value => {
+      this.isAuthenticated = value;
     });
 
+    setTimeout(() => {
+      console.log(this.isAuthenticated);
+      if(this.isAuthenticated){
+        this.authorizeService.getUser().subscribe(data => {
+          this.userId = data['sub'];
+        });
+        // else block onClickAdd()
+      }
+   }, 1000);
+
+    setTimeout(() => {
+      this._cryptoDataService.getWallet().subscribe(res => {
+        console.log(res);
+        var cryptosUser = Object.keys(res).map(function(index){
+          let idCrypto = res[index].idCrypto;
+          let userId = res[index].userId;
+          let cryptosUser = new Array; 
+          cryptosUser[0]= idCrypto;
+          cryptosUser[1] = userId;
+          return cryptosUser;
+        })
+        console.log(cryptosUser);
+      });
+    }, 2000);
   }
  
   onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {

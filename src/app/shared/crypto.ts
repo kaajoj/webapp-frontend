@@ -1,4 +1,5 @@
 export interface Crypto {
+    id: number;
     idCrypto: number;
     Name: string;
     Symbol: string;
@@ -10,4 +11,5 @@ export interface Crypto {
     Quantity: string;
     AlertUp: string;
     AlertDown: string; 
+    // OwnFlag: string;
 }

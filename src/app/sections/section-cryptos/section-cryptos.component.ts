@@ -26,23 +26,35 @@ export class SectionCryptosComponent implements OnInit {
   buttonRemove: any;
 
   cryptos: any;
+  cryptosUser: any;
   cryptosWallet: Crypto;
 
   priceToChart: any[];
   c24h: any;
 
   ngOnInit() {
-    this._cryptoDataService.getCryptos().subscribe(
-      res => {
-        this.cryptos = res;
-      }); 
+    this._cryptoDataService.getCryptosAPI().subscribe();
 
     setTimeout(() => {
-        this._cryptoDataService.getCryptosAPI().subscribe(
-          res => {
+      this._cryptoDataService.getCryptos().subscribe(
+        res => {
           this.cryptos = res;
-          });
-     }, 1000);
+        }); 
+    }, 2000);
+    
+    // setTimeout(() => {
+    //   this._cryptoDataService.getCryptosAPI().subscribe((res: any[]) => {
+    //       for (let i = 0; i < res.length; i++) {
+    //         if(this.cryptos[i].symbol == res[i].symbol) {
+    //           this.cryptos[i].price = res[i].price;
+    //           this.cryptos[i].change7d = res[i].change7d;
+    //           this.cryptos[i].change24h = res[i].change24h;
+    //           this.cryptos[i].price = res[i].price;
+    //           console.log(this.cryptos[i]);
+    //         }
+    //       }
+    //     });
+    // }, 1000);
 
     this.authorizeService.isAuthenticated().subscribe( value => {
       this.isAuthenticated = value;
@@ -53,28 +65,43 @@ export class SectionCryptosComponent implements OnInit {
       if(this.isAuthenticated){
         this.authorizeService.getUser().subscribe(data => {
           this.userId = data['sub'];
+          this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
+            this.cryptosUser = res;
+            console.log(this.cryptosUser);
+            
+            // this.cryptos.forEach(element => {
+            //   element += ["test", 3];
+            //   element = ["test2", 4];
+            // });
+            // console.log(this.cryptos);
+          });
         });
         // else block onClickAdd()
       }
-   }, 1000);
+   }, 3000);
 
-    setTimeout(() => {
-      this._cryptoDataService.getWallet().subscribe(res => {
-        console.log(res);
-        var cryptosUser = Object.keys(res).map(function(index){
-          let idCrypto = res[index].idCrypto;
-          let userId = res[index].userId;
-          let cryptosUser = new Array; 
-          cryptosUser[0]= idCrypto;
-          cryptosUser[1] = userId;
-          return cryptosUser;
-        })
-        console.log(cryptosUser);
-      });
-    }, 2000);
+    // setTimeout(() => {
+    //   this._cryptoDataService.getWallet().subscribe(res => {
+    //     console.log(res);
+    //     this.cryptosUser = Object.keys(res).map(function(index){
+    //       let idCrypto = res[index].idCrypto;
+    //       let userId = res[index].userId;
+    //       let cryptosUser = new Array; 
+    //       cryptosUser[0]= idCrypto;
+    //       cryptosUser[1] = userId;
+    //       return cryptosUser;
+    //     })
+    //     console.log(this.cryptosUser);
+
+    //     this.cryptos.forEach(element => {
+    //       element += ["test", 3];
+    //     });
+    //     console.log(this.cryptos);
+    //   });
+    // }, 2000);
   }
  
-  onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d) {
+  onClickAdd(idCrypto, rank, name, symbol, price, change24h, change7d, id) {
     this.buttonAdd = document.getElementById(rank)
     // console.log(this.buttonAdd);
     this.buttonAdd.disabled = true;
@@ -82,8 +109,7 @@ export class SectionCryptosComponent implements OnInit {
     this.buttonRemove = document.getElementById(rank+""+rank);
     // console.log(this.buttonRemove);
     this.buttonRemove.disabled = false;
-    
-    this._cryptoDataService.addToWallet(idCrypto, rank, name, symbol, price, change24h, change7d, this.userId);
+    this._cryptoDataService.addToWallet(idCrypto, rank, name, symbol, price, change24h, change7d, id, this.userId);
   }
 
   onClickRemove(rank) {

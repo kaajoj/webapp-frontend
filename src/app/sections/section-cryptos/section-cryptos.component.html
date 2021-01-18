@@ -19,13 +19,14 @@
     <tbody>
       <tr *ngFor="let crypto of cryptos" (click)="chartDataOnClick(crypto.price, crypto.change24h, crypto.change7d)"> 
         <!-- <td>{{ crypto.idCrypto}}</td> -->
+        <!-- <td>{{ crypto.id }}</td> -->
         <td>{{ crypto.rank }}</td>
         <td>{{ crypto.name }}</td>
         <td>{{ crypto.symbol }}</td>
         <td class="priceColumn">{{ crypto.price }}</td>
         <td>{{ crypto.change24h }}</td>
         <td>{{ crypto.change7d }}</td>
-        <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.idCrypto, crypto.rank, crypto.name, crypto.symbol, crypto.price, crypto.change24h, crypto.change7d)"  [disabled]="crypto.ownFlag">Add</button></td>
+        <td><button id="{{crypto.rank}}" type="button" class="btn btn-success" (click)="onClickAdd(crypto.idCrypto, crypto.rank, crypto.name, crypto.symbol, crypto.price, crypto.change24h, crypto.change7d, crypto.id)"  [disabled]="crypto.ownFlag">Add</button></td>
         <td><button id="{{crypto.rank}}{{crypto.rank}}" type="button" class="btn btn-danger" (click)="onClickRemove(crypto.rank)" [disabled]="!crypto.ownFlag">Remove</button></td>
       </tr>
     </tbody>

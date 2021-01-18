@@ -29,8 +29,9 @@ export class CryptoDataService {
       return this._http.get('http://localhost:5000/api/wallet/GetWalletByUserId/' + id)
     }
 
-    addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string, userId: string) {
-    return this._http.post('http://localhost:5000/api/wallet/',
+    addToWallet(idCrypto: number, rank: number, name: string, symbol: string, price: string, change24h: string, change7d: string, id: number, userId: string) {
+    console.log(id);
+      return this._http.post('http://localhost:5000/api/wallet/',
     {
       "idcrypto": idCrypto,
       "rank": rank,
@@ -44,6 +45,7 @@ export class CryptoDataService {
       "sum":"0",
       "alertUp":"20",
       "alertDown":"10",
+      "cryptoId" : id,
       "userId" : userId
       })
       .subscribe(

@@ -15,7 +15,12 @@ export interface DialogData {
   styleUrls: ['./section-wallet.component.css']
 })
 export class SectionWalletComponent implements OnInit {
-  public userId: string;
+  private isAuthenticated: boolean;
+  private userId: string;
+  private cryptos: any;
+  private quantity: string;
+  private alertUp: string;
+  private alertDown: string;
 
   constructor(
     private _cryptoDataService: CryptoDataService, 
@@ -23,32 +28,27 @@ export class SectionWalletComponent implements OnInit {
     private authorizeService: AuthorizeService
     ) { }
 
-  cryptos: any;
-  quantity: string;
-  alertUp: string;
-  alertDown: string;
-
   ngOnInit() {
     this._cryptoDataService.updateWalletPrices().subscribe();
 
+    this.authorizeService.isAuthenticated().subscribe( value => {
+      this.isAuthenticated = value;
+    });  
+
     setTimeout(() => {
-      // this.authorizeService.getUser().subscribe(data => {
-      //   this.userId = data['sub'];
-      //   this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
-      //   this.cryptos = res;
-      //   });
-      // });
-      this._cryptoDataService.getWallet().subscribe(res => {
-        this.cryptos = res;
-      });
-      // this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
-      // this.cryptos = res;
-      // });
-    }, 1000);
+      if(this.isAuthenticated){
+        this.authorizeService.getUser().subscribe(data => {
+          this.userId = data['sub'];
+          this._cryptoDataService.GetWalletByUserId(this.userId).subscribe(res => {
+            this.cryptos = res;
+          });
+        });
+      }
+    }, 1500);
 
     setTimeout(() => {
       this.calculateAlerts();
-    }, 2500);
+    }, 3000);
   }
 
   openDialog(id): void {
@@ -127,26 +127,17 @@ export class SectionWalletComponent implements OnInit {
         var alertDown = parseFloat(element.alertDown.replace(",","."));
         element.calculation = calculation;
 
-        console.log(oldPrice);
-        console.log(newPrice);
-        console.log(calculation);
-        // console.log(alertUp);
-        // console.log(alertDown);
-
         if(calculation<-alertDown) {
-          element.buy = "Price is below your alert(" + -alertDown + "%)  -  buy  " + symbol
+          element.buy = "Price is below your alert (" + -alertDown + "%)  -  buy  " + symbol
           console.log("Price is below alert - buy  " + symbol)
         }
         if(calculation>alertUp) {
-          element.sell = "Price is above your alert(" + alertUp + "%)  -  sell  " + symbol
+          element.sell = "Price is above your alert (" + alertUp + "%)  -  sell  " + symbol
           console.log("Price is above alert - sell  " + symbol)
         }
-
       }
     }
   }
-
-
  }
 
 @Component({
@@ -156,7 +147,6 @@ export class SectionWalletComponent implements OnInit {
 })
 
 export class Dialog {
-
   constructor(
     public dialogRef: MatDialogRef<Dialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -164,7 +154,6 @@ export class Dialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }
 
 @Component({
@@ -174,7 +163,6 @@ export class Dialog {
 })
 
 export class DialogAlertUp {
-
   constructor(
     public dialogRef2: MatDialogRef<DialogAlertUp>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -182,7 +170,6 @@ export class DialogAlertUp {
   onNoClickUp(): void {
     this.dialogRef2.close();
   }
-
 }
 
 
@@ -193,7 +180,6 @@ export class DialogAlertUp {
 })
 
 export class DialogAlertDown {
-  
   constructor(
     public dialogRef3: MatDialogRef<DialogAlertDown>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -201,5 +187,4 @@ export class DialogAlertDown {
   onNoClickDown(): void {
     this.dialogRef3.close();
   }
-
 }
